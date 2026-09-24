@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Favorite Person ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Poppins',sans-serif;
+      height:100vh;
+      overflow:hidden;
+      background:linear-gradient(-45deg,#10031b,#3d0b44,#ff4f9f,#ff7fc8);
+      background-size:400% 400%;
+      animation:bgMove 12s ease infinite;
+      color:white;
+      position:relative;
+    }
+
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .glow,.glow2{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(150px);
+      opacity:.35;
+    }
+
+    .glow{
+      width:350px;height:350px;
+      background:#ff5fa8;
+      top:-100px;left:-120px;
+    }
+
+    .glow2{
+      width:300px;height:300px;
+      background:#ffc4e8;
+      bottom:-80px;right:-100px;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-30px;
+      color:#ffd8ef;
+      animation:rise linear forwards;
+      pointer-events:none;
+    }
+
+    @keyframes rise{
+      from{transform:translateY(0) scale(.8);opacity:0;}
+      20%{opacity:1;}
+      to{transform:translateY(-120vh) translateX(40px) scale(1.3);opacity:0;}
+    }
+
+    .container{
+      position:relative;
+      z-index:5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      padding:25px;
+    }
+
+    .card{
+      max-width:500px;
+      width:100%;
+      text-align:center;
+      padding:40px;
+      border-radius:30px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 0 40px rgba(255,255,255,.08);
+      animation:fade 1s ease;
+    }
+
+    @keyframes fade{
+      from{opacity:0;transform:translateY(40px);}
+      to{opacity:1;transform:none;}
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      font-size:.75rem;
+      margin-bottom:20px;
+      letter-spacing:2px;
+    }
+
+    h2{
+      font-family:'Great Vibes',cursive;
+      font-size:2.4rem;
+      color:#ffd5eb;
+    }
+
+    h1{
+      margin:10px 0 20px;
+      font-size:2.6rem;
+      line-height:1.2;
+    }
+
+    #typing{
+      line-height:1.9;
+      color:#ffeaf5;
+      min-height:120px;
+      font-size:.95rem;
+    }
+
+    button{
+      margin-top:25px;
+      padding:15px 35px;
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ff4f9f,#ff79c8);
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 0 25px rgba(255,105,180,.45);
+      transition:.35s;
+    }
+
+    button:hover{
+      transform:scale(1.05) translateY(-2px);
+    }
+
+    .footer{
+      margin-top:20px;
+      opacity:.7;
+      font-size:.8rem;
+    }
+
+    .popup{
+      position:absolute;
+      inset:0;
+      background:rgba(10,0,15,.95);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      opacity:0;
+      visibility:hidden;
+      transition:.5s;
+      z-index:10;
+    }
+
+    .popup.show{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .popup-card{
+      width:90%;
+      max-width:520px;
+      padding:35px;
+      border-radius:28px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,.18);
+      text-align:center;
+    }
+
+    .popup-card h3{
+      font-size:2rem;
+      margin-bottom:15px;
+    }
+
+    .popup-card p{
+      line-height:1.9;
+      color:#ffe5f1;
+      margin-bottom:25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+<div id="hearts"></div>
+
+<div class="container">
+  <div class="card">
+
+    <div class="badge">❤️ A LITTLE MESSAGE FROM ME</div>
+
+    <h2>Hello, Pretty Girl 🌷</h2>
+    <h1>Can We Talk For A Moment?</h1>
+
+    <p id="typing"></p>
+
+    <button id="openBtn">Open My Heart ❤️</button>
+
+    <p class="footer">
+      Made with regret, gratitude, and a hope for us.
+    </p>
+
+  </div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-card">
+    <h3>💗 Before You Continue...</h3>
+
+    <p>
+      Before I ask for anything...
+      there's something I need to admit.
+      <br><br>
+      I know I made mistakes.
+      I know I hurt someone I love.
+      <br><br>
+      So please...
+      let me be honest this time.
+    </p>
+
+    <button onclick="window.location.href='confession.html'">Continue →</button>
+  </div>
+</div>
+
+<script>
+const text="Today didn't go the way I wanted it to. I know a few words won't magically fix everything. But I made this because there are things I want to tell you properly, from the bottom of my heart.";
+
+let i=0;
+const typing=document.getElementById('typing');
+
+(function type(){
+ if(i<text.length){
+   typing.innerHTML+=text.charAt(i);
+   i++;
+   setTimeout(type,35);
+ }
+})();
+
+setInterval(()=>{
+ const h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML=Math.random()>.5?'❤':'💖';
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(14+Math.random()*20)+'px';
+ h.style.animationDuration=(5+Math.random()*5)+'s';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),10000);
+},250);
+
+document.getElementById('openBtn').onclick=()=>{
+ document.getElementById('popup').classList.add('show');
+}
+</script>
+
+</body>
+</html>

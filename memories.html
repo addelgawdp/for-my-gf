@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Memories 🌸</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(#fff8fb,#ffeaf3,#fffdfd);
+    overflow-x:hidden;
+    color:#444;
+}
+
+/* Sakura */
+.petal{
+    position:fixed;
+    top:-40px;
+    pointer-events:none;
+    font-size:18px;
+    opacity:.8;
+    animation:fall linear forwards;
+    z-index:999;
+}
+@keyframes fall{
+    to{
+        transform:translateY(120vh) translateX(70px) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:25px;
+}
+
+.hero h1{
+    font-family:'Caveat',cursive;
+    font-size:4.8rem;
+    color:#ff5b9f;
+}
+
+.hero p{
+    margin-top:20px;
+    max-width:600px;
+    line-height:2;
+    color:#666;
+}
+
+.scroll{
+    margin-top:60px;
+    color:#ff73b8;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(8px);}
+}
+
+/* Scrapbook Cards */
+.memory{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:70px 25px;
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.memory.show{
+    opacity:1;
+    transform:none;
+}
+
+.card{
+    background:white;
+    width:min(350px,95%);
+    padding:18px;
+    border-radius:22px;
+    box-shadow:0 20px 45px rgba(255,110,170,.15);
+    position:relative;
+    transform:rotate(-3deg);
+    transition:.4s;
+}
+
+.memory.right .card{
+    transform:rotate(3deg);
+}
+
+.card:hover{
+    transform:rotate(0deg) scale(1.03);
+}
+
+.tape{
+    width:90px;
+    height:25px;
+    background:#ffe7a7cc;
+    position:absolute;
+    left:50%;
+    top:-12px;
+    transform:translateX(-50%) rotate(-6deg);
+    border-radius:6px;
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+    display:block;
+}
+
+.note h2{
+    margin-top:15px;
+    font-family:'Caveat',cursive;
+    color:#ff5b9f;
+    font-size:2rem;
+}
+
+.note p{
+    margin-top:10px;
+    line-height:1.9;
+    color:#555;
+}
+
+/* Divider Quote */
+.quote{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 25px;
+}
+
+.quote-box{
+    background:#fff;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(255,140,190,.12);
+    max-width:700px;
+}
+
+.quote h2{
+    font-family:'Caveat',cursive;
+    color:#ff5b9f;
+    font-size:3rem;
+}
+
+.quote p{
+    margin-top:20px;
+    line-height:2;
+    color:#666;
+}
+
+/* Special For You */
+.support{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.support-card{
+    background:linear-gradient(180deg,#fff,#fff6fa);
+    padding:40px;
+    border-radius:28px;
+    max-width:720px;
+    box-shadow:0 20px 50px rgba(255,130,180,.15);
+}
+
+.support-card h2{
+    font-family:'Caveat',cursive;
+    font-size:3rem;
+    color:#ff5b9f;
+}
+
+#supportText{
+    margin-top:20px;
+    white-space:pre-wrap;
+    line-height:2;
+    color:#555;
+    min-height:260px;
+}
+
+/* Ending */
+.end{
+    min-height:100vh;
+    background:linear-gradient(180deg,#2b022d,#100013);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:30px;
+}
+
+.end-card{
+    max-width:600px;
+}
+
+.end h1{
+    font-family:'Caveat',cursive;
+    font-size:4rem;
+    color:#ff95d2;
+}
+
+.end p{
+    margin:20px 0 35px;
+    line-height:2;
+    color:#ffe0f0;
+}
+
+button{
+    padding:16px 34px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(90deg,#ff5b9f,#ff82c9);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,91,159,.35);
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px) scale(1.05);
+}
+
+@media(max-width:700px){
+.hero h1{font-size:3.5rem;}
+.quote h2,.support-card h2,.end h1{font-size:2.5rem;}
+.support-card{padding:28px;}
+}
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<section class="hero">
+    <h1>Before The Last Question... 🌷</h1>
+    <p>
+        Before I ask you to be my girlfriend again...
+        there's something I want you to remember first.
+    </p>
+
+    <div class="scroll">Scroll Slowly ↓</div>
+</section>
+
+<section class="memory left">
+<div class="card">
+<div class="tape"></div>
+<img src="assets/photos/1.jpeg" alt="photo1">
+<div class="note">
+<h2>Memory #01</h2>
+<p>
+Thank you.
+
+For staying with me through so many days.
+
+For choosing us over and over again,
+ even when I didn't always make it easy.
+</p>
+</div>
+</div>
+</section>
+
+<section class="memory right">
+<div class="card">
+<div class="tape"></div>
+<img src="assets/photos/2.jpeg" alt="photo2">
+<div class="note">
+<h2>Memory #02</h2>
+<p>
+I know life hasn't been easy for you lately.
+
+I know there are things happening around you that make your heart feel tired.
+
+I just hope you remember...
+
+You don't always have to be strong.
+</p>
+</div>
+</div>
+</section>
+
+<section class="quote">
+<div class="quote-box">
+<h2>Sometimes...</h2>
+<p>
+Some people become precious so quietly.
+
+Without realizing it, they become the place you want to come home to.
+
+And for me...
+that person is you.
+</p>
+</div>
+</section>
+
+<section class="memory left">
+<div class="card">
+<div class="tape"></div>
+<img src="assets/photos/3.jpeg" alt="photo3">
+<div class="note">
+<h2>Memory #03</h2>
+<p>
+I love seeing you smile.
+
+Not because your smile is pretty...
+
+But because it means, even for a moment,
+you're feeling okay.
+</p>
+</div>
+</div>
+</section>
+
+<section class="memory right">
+<div class="card">
+<div class="tape"></div>
+<img src="assets/photos/4.jpeg" alt="photo4">
+<div class="note">
+<h2>Memory #04</h2>
+<p>
+Every version of you...
+
+The happy one.
+The sleepy one.
+The overthinking one.
+
+I love every version.
+</p>
+</div>
+</div>
+</section>
+
+<section class="support">
+<div class="support-card">
+<h2>This Part Is Just For You 🤍</h2>
+
+<div id="supportText"></div>
+</div>
+</section>
+
+<section class="end">
+<div class="end-card">
+<h1>One Last Thing... ❤️</h1>
+<p>
+You've seen these little memories.
+
+Now...
+there's one last thing I want to ask you.
+</p>
+
+<button onclick="window.location.href='ending.html'">
+Continue →
+</button>
+</div>
+</section>
+
+<script>
+
+/* Sakura */
+setInterval(()=>{
+ const p=document.createElement('div');
+ p.className='petal';
+ p.innerHTML='🌸';
+ p.style.left=Math.random()*100+'vw';
+ p.style.animationDuration=(6+Math.random()*5)+'s';
+ document.body.appendChild(p);
+ setTimeout(()=>p.remove(),12000);
+},450);
+
+/* Fade Scroll */
+const cards=document.querySelectorAll('.memory');
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+  }
+ })
+},{threshold:.35});
+
+cards.forEach(c=>observer.observe(c));
+
+/* Typewriter Support Section */
+const support=`You've been carrying so many things lately.
+I know there are days when everything feels heavy.
+I know sometimes you smile even when your heart is tired.
+I just want you to remember this.
+You don't have to face everything alone anymore.
+It's okay to cry.
+It's okay to feel exhausted.
+It's okay to need someone.
+I'll always pray that your days become lighter.
+And even if someday everything feels too much...
+I hope you'll remember that I'll always want to be beside you.
+I'm really proud of you.
+Please don't forget how strong you are. 🤍`;
+
+let i=0;
+const target=document.getElementById('supportText');
+
+const supportObserver=new IntersectionObserver(entries=>{
+ if(entries[0].isIntersecting){
+   function type(){
+    if(i<support.length){
+      target.innerHTML+=support.charAt(i);
+      i++;
+      setTimeout(type,26);
+    }
+   }
+   type();
+   supportObserver.disconnect();
+ }
+});
+
+supportObserver.observe(target);
+
+</script>
+</body>
+</html>
